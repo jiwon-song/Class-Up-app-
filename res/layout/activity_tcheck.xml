@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:backgroundTint="#FFEBEE"
+    android:fitsSystemWindows="true"
+    tools:context=".SMain"
+    tools:openDrawer="start">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="100">
+
+        <!-- 바텀 네비 달아주기 위해 frameLayout 만들어서 weight = 90 줌 -->
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="100">
+            <!--액션바-->
+            <com.google.android.material.appbar.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+                <!-- toolbar -->
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="#ffffff"
+                    android:gravity="center_horizontal"
+                    app:popupTheme="@style/burger"
+                    app:theme="@style/burger"> <!-- style.xml 에서 색 변경 가능 -->
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="100dp"
+                        android:src="@drawable/check_home" /> <!-- 타이틀 이미지 여기 수정하면 됨 -->
+                </androidx.appcompat.widget.Toolbar>
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <!-- 여기 밑에 내용 넣으면 됨 -->
+
+
+            <RelativeLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="90dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center">
+
+                    <TextView
+                        android:id="@+id/Show_Time"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="현재시간"
+                        android:layout_marginRight="10dp"
+                        android:textSize="18sp" />
+
+                    <RadioGroup
+                        android:id="@+id/radioGroup"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal"
+                        >
+
+                        <RadioButton
+                            android:id="@+id/rbIn"
+                            android:layout_width="wrap_content"
+                            android:layout_height="35dp"
+                            android:checked="true"
+                            android:textSize="16sp"
+                            android:background="@drawable/selector_radio_button"
+                            android:textColor="@drawable/selector_radio_text"
+                            android:button="@null"
+                            android:textAlignment="center"
+
+
+                            android:text="입실"/>
+
+                        <RadioButton
+                            android:id="@+id/rbOut"
+                            android:layout_width="wrap_content"
+                            android:layout_height="35dp"
+                            android:textSize="16sp"
+                            android:background="@drawable/selector_radio_button"
+                            android:textColor="@drawable/selector_radio_text"
+                            android:button="@null"
+                            android:textAlignment="center"
+
+                            android:text="퇴실"/>
+
+                    </RadioGroup>
+
+
+                </LinearLayout>
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:gravity="center"
+                android:layout_marginTop="130dp">
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/checkRecy"
+                    android:layout_width="320dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/num_border">
+
+                </androidx.recyclerview.widget.RecyclerView>
+
+            </RelativeLayout>
+
+
+            <GridLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="270dp"
+                android:columnCount="5"
+                android:orientation="horizontal"
+                android:rowCount="9">
+
+
+                <EditText
+                    android:id="@+id/etNumPad"
+                    android:layout_row="1"
+                    android:layout_columnSpan="4"
+                    android:layout_gravity="center|fill"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:padding="10dp"
+                    android:hint="전화번호를 입력하세요(8자리)"
+                    android:background="@drawable/tcheck_border"
+                    android:gravity="center"
+                    android:textSize="18sp"
+                    android:textColor="#000202"
+                    android:ems="10"
+                    android:maxLength="8"
+                    android:enabled="false"
+                    android:inputType="number">
+
+                    <requestFocus/>
+                </EditText>
+
+
+                <ImageButton
+                    android:id="@+id/button1"
+                    android:layout_row="4"
+                    android:layout_column="0"
+                    android:layout_margin="10dp"
+                    android:padding="0dp"
+                    android:src="@drawable/num1_selector"/>
+
+                <ImageButton
+                    android:id="@+id/button2"
+                    android:layout_row="4"
+                    android:layout_column="1"
+                    android:layout_margin="10dp"
+                    android:padding="0dp"
+                    android:src="@drawable/num2_selector"/>
+
+                <ImageButton
+                    android:id="@+id/button3"
+                    android:layout_row="4"
+                    android:layout_column="2"
+                    android:layout_margin="10dp"
+                    android:padding="0dp"
+                    android:src="@drawable/num3_selector" />
+
+                <ImageButton
+                    android:id="@+id/deletebutton"
+                    android:layout_row="8"
+                    android:layout_column="0"
+                    android:layout_columnSpan="1"
+                    android:layout_margin="10dp"
+                    android:padding="0dp"
+                    android:src="@drawable/num_delete_selector"/>
+
+                <ImageButton
+                    android:id="@+id/button4"
+                    android:layout_row="5"
+                    android:textColor="#000000"
+                    android:layout_column="0"
+                    android:layout_margin="10dp"
+                    android:padding="0dp"
+                    android:src="@drawable/num4_selector"/>
+
+                <ImageButton
+                    android:id="@+id/button5"
+                    android:textColor="#000000"
+                    android:layout_row="5"
+                    android:layout_column="1"
+                    android:layout_margin="10dp"
+                    android:padding="0dp"
+                    android:src="@drawable/num5_selector" />
+
+                <ImageButton
+                    android:id="@+id/button6"
+                    android:textColor="#000000"
+                    android:layout_row="5"
+                    android:layout_column="2"
+                    android:layout_margin="10dp"
+                    android:padding="0dp"
+                    android:src="@drawable/num6_selector" />
+
+                <ImageButton
+                    android:id="@+id/button7"
+                    android:textColor="#000000"
+                    android:layout_row="6"
+                    android:layout_column="0"
+                    android:layout_margin="10dp"
+                    android:padding="0dp"
+                    android:src="@drawable/num7_selector"/>
+
+                <ImageButton
+                    android:id="@+id/button8"
+                    android:textColor="#000000"
+                    android:layout_row="6"
+                    android:layout_column="1"
+                    android:layout_margin="10dp"
+                    android:padding="0dp"
+                    android:src="@drawable/num8_selector" />
+
+                <ImageButton
+                    android:id="@+id/button9"
+                    android:textColor="#000000"
+                    android:layout_row="6"
+                    android:layout_column="2"
+                    android:layout_margin="10dp"
+                    android:padding="0dp"
+                    android:src="@drawable/num9_selector" />
+
+                <ImageButton
+                    android:id="@+id/clearbutton"
+                    android:layout_row="8"
+                    android:layout_column="1"
+                    android:layout_columnSpan="1"
+                    android:layout_margin="10dp"
+                    android:padding="0dp"
+                    android:src="@drawable/num_refresh_selector"/>
+
+                <ImageButton
+                    android:id="@+id/button0"
+                    android:textColor="#000000"
+                    android:layout_row="7"
+                    android:layout_column="1"
+                    android:layout_margin="10dp"
+                    android:padding="0dp"
+                    android:src="@drawable/num0_selector" />
+
+
+                <ImageButton
+                    android:id="@+id/completebutton"
+                    android:layout_row="8"
+                    android:layout_column="2"
+                    android:layout_columnSpan="1"
+                    android:layout_margin="10dp"
+                    android:padding="0dp"
+                    android:src="@drawable/num_check_selector"/>
+
+            </GridLayout>
+
+
+            <!-- 여기 위에 내용 넣으면 됨 -->
+        </FrameLayout>
+
+
+
+    </LinearLayout>
+
+    <!-- 버거메뉴 눌렀을 때 나오는 화면 -->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header_main"
+        app:menu="@menu/main_menu"/>
+
+
+</androidx.drawerlayout.widget.DrawerLayout>

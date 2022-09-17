@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/drawerLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".TMain"
+    tools:openDrawer="start">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:weightSum="100">
+
+        <!-- 바텀 네비 달아주기 위해 linearLayout 만들어서 weight = 90 줌 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="90"
+            android:orientation="vertical"
+            android:weightSum="100">
+            <!--액션바-->
+            <com.google.android.material.appbar.AppBarLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="10">
+                <!-- toolbar -->
+                <androidx.appcompat.widget.Toolbar
+                    android:id="@+id/toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="60dp"
+                    android:layout_gravity="center_horizontal"
+                    android:background="#ffffff"
+                    android:gravity="center_horizontal"
+                    app:popupTheme="@style/burger"
+                    app:theme="@style/burger"> <!-- style.xml 에서 색 변경 가능 -->
+
+                    <ImageView
+                        android:layout_width="100dp"
+                        android:layout_height="30dp"
+                        android:layout_marginLeft="100dp"
+                        android:src="@drawable/tsend" /> <!-- 타이틀 이미지 여기 수정하면 됨 -->
+                </androidx.appcompat.widget.Toolbar>
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+
+
+            <!-- 여기 밑에 내용 넣으면 됨 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="60"
+                android:orientation="vertical"
+                android:weightSum="10">
+
+                <EditText
+                    android:id="@+id/etPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:hint="휴대폰 번호"
+                    android:gravity="center"
+                    android:layout_weight="3"/>
+
+                <EditText
+                    android:id="@+id/etMessage"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:text="고2S 7강 테스트\n이름 : 홍길동\n평균 : 45.6/ 60\n최고점 : 56 / 60"
+                    android:textSize="20sp"
+                    android:gravity="left"
+                    android:paddingLeft="20dp"
+                    android:layout_weight="7"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="30"
+                android:weightSum="2"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnTestSend"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_margin="60dp"
+                    android:text="발송"
+                    android:textSize="20sp"/>
+                <Button
+                    android:id="@+id/btnCancel"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:layout_margin="60dp"
+                    android:text="취소"
+                    android:textSize="20sp"/>
+
+            </LinearLayout>
+
+            <!-- 여기 위에 내용 넣으면 됨 -->
+        </LinearLayout>
+
+
+    </LinearLayout>
+    <!-- 버거메뉴 눌렀을 때 나오는 화면 -->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        android:fitsSystemWindows="true"
+        app:headerLayout="@layout/nav_header_main"
+        app:menu="@menu/main_menu"/>
+
+
+</androidx.drawerlayout.widget.DrawerLayout>
